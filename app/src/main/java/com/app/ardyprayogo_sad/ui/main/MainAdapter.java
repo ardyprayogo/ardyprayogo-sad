@@ -1,4 +1,4 @@
-package com.app.ardyprayogo_sad.ui;
+package com.app.ardyprayogo_sad.ui.main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.ardyprayogo_sad.R;
 import com.app.ardyprayogo_sad.model.Data;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         String firstName = data.getName().getFirst();
         String lastName = data.getName().getLast();
         holder.tvText.setText(firstName + " " + lastName);
-
+        Glide.with(mContext)
+                .load(data.getPicture().getThumbnail())
+                .into(holder.ivPic);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

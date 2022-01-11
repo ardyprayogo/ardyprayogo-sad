@@ -3,7 +3,9 @@ package com.app.ardyprayogo_sad.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
     @SerializedName("street")
     @Expose
     private Street street;

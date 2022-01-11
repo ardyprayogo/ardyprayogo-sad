@@ -1,16 +1,19 @@
 package com.app.ardyprayogo_sad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.app.ardyprayogo_sad.model.Data;
 import com.app.ardyprayogo_sad.network.VolleyResponseListener;
 import com.app.ardyprayogo_sad.network.VolleyUtil;
-import com.app.ardyprayogo_sad.ui.MainAdapter;
+import com.app.ardyprayogo_sad.ui.detail.DetailActivity;
+import com.app.ardyprayogo_sad.ui.main.MainAdapter;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,13 +41,19 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MainAdapter(this, new MainAdapter.Click() {
             @Override
             public void onItem(Data data) {
-
+                Intent i = new Intent(MainActivity.this, DetailActivity.class);
+                i.putExtra("data", data);
+                startActivity(i);
             }
         });
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
+                lm.getOrientation());
         rvMain = findViewById(R.id.rv_main);
         rvMain.setHasFixedSize(false);
-        rvMain.setLayoutManager(new LinearLayoutManager(this));
+        rvMain.setLayoutManager(lm);
         rvMain.setAdapter(mAdapter);
+        rvMain.addItemDecoration(dividerItemDecoration);
     }
 
     private void getData() {

@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/ArdyPrayogoSAD/app/src/main/res/layout/activity_detail.xml" value="0.22" />
         <entry key="..\:/Project/ArdyPrayogoSAD/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Project/ArdyPrayogoSAD/app/src/main/res/layout/list_main_contact.xml" value="0.13" />
+        <entry key="..\:/Project/ArdyPrayogoSAD/app/src/main/res/layout/list_main_contact.xml" value="0.33" />
       </map>
     </option>
   </component>
