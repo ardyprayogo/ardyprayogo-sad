@@ -2,7 +2,9 @@ package com.app.ardyprayogo_sad.ui.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +26,22 @@ public class DetailActivity extends AppCompatActivity {
         mData = (Data) getIntent().getSerializableExtra("data");
         initUI();
         initContact();
+        initEvent();
+    }
+
+    private void initEvent() {
+        tvEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { mData.getEmail() });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(intent, ""));
+            }
+        });
+
     }
 
     private void initUI() {
