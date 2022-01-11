@@ -3,6 +3,7 @@ package com.app.ardyprayogo_sad.ui.detail;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.app.ardyprayogo_sad.R;
 import com.app.ardyprayogo_sad.model.Data;
 import com.bumptech.glide.Glide;
+
+import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -39,6 +42,18 @@ public class DetailActivity extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "");
                 intent.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(Intent.createChooser(intent, ""));
+            }
+        });
+
+        tvLokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String uri = String.format(Locale.ENGLISH,
+                        "geo:%f,%f",
+                        Double.valueOf(mData.getLocation().getCoordinates().getLatitude()),
+                        Double.valueOf(mData.getLocation().getCoordinates().getLongitude()));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(intent);
             }
         });
 
